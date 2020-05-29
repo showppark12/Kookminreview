@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=d, initial-scale=1.0">
+    <title>식당 리뷰</title>
+</head>
+
+<body>
+    <table class="review_list">
+        {% for review in reviews %}
+        <tr>
+            {% if review.img %}
+            <td><img src="{{ review.img.url}}"></td>
+            {% endif %}
+            <td>
+                <h3>{{ review.title }} </h3>
+                <p>{{ review.pub_date }} </p>
+                <p>{{ review.summary }} </p>
+                <p>추천수: {{ review.recommend }} </p>
+                <a href="{% url 'detail' review.id %}">자세히 보기</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>
