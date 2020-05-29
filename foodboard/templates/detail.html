@@ -14,8 +14,9 @@
     <div>{{ review.img }}</div>
     <div>{{ review.text }}</div>
     <hr>
-    <div>추천수: {{ review.recommend }}</div>
-    <div>{{ review.reply }}</div>
+    <a href="{%url 'edit' review.id %}">내용변경</a>
+    <a href="{%url 'delete' review.id %}">삭제</a>
+    <a href="{%url 'home' %}">메인화면</a>
 </body>
 
 </html>

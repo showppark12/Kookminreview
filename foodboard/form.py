@@ -1,7 +1,7 @@
 from django import forms
-from .models import Blog
+from .models import FoodBoard
 
 class FoodForm(forms.ModelForm):
     class Meta:
-        model = FoodForm
-        fields = ['title', 'pub_date', 'img', 'text']
+        model = FoodBoard
+        fields = ['title', 'img', 'text']

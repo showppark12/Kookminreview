@@ -6,8 +6,6 @@ class FoodBoard(models.Model):
     pub_date = models.DateTimeField()
     img = models.ImageField(upload_to='foodboard/', blank=True, null=True)
     text = models.TextField()
-    recommend = models.IntegerField()
-    reply = models.TextField()
 
     def __str__(self):
         return self.title

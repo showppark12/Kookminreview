@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import FoodBoard
-from .forms import FoodForm
+from .form import FoodForm
 from django.utils import timezone
 
 def home(request):
@@ -24,7 +24,7 @@ def new(request):
         # 입력 데이터 유효성 검사 해주기
         if form.is_valid():
             content = form.save(commit=False) #데이터 임시 저장(이후 살 붙이고 제대로 저장)
-            content.date = timezone.now()
+            content.pub_date = timezone.now()
             content.save()
             return redirect('home')
 
@@ -38,7 +38,7 @@ def edit(request, review_id):
         # 입력 데이터 유효성 검사 해주기
         if form.is_valid():
             content = form.save(commit=False) #데이터 임시 저장(이후 살 붙이고 제대로 저장)
-            content.date = timezone.now()
+            content.pub_date = timezone.now()
             content.save()
             return redirect('detail', content.id)
     return render(request, 'edit.html', { 'form': form, 'id': edit_review.id })
