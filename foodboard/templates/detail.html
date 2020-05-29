@@ -26,6 +26,12 @@
                     <p>Categories: <a href="{%url 'food_home' %}">식당</a></p>
                 </div>
 
+                <div class="button-group" style="padding-top: 0;">
+                    <a href="{% url 'edit' review.id %}" class="btn btn-primary btn-md">수정</a>
+                    <a href="{% url 'delete' review.id %}" class="btn btn-primary btn-md">삭제</a>
+                    <a href="{% url 'food_home' %}" class="btn btn-primary btn-md">목록으로</a>
+                </div>
+
                 <!-- 덧글 -->
                 <div class="pt-5">
                     <h3 class="mb-5">1 Comments</h3>

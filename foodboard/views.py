@@ -52,3 +52,18 @@ def delete(request, review_id):
     to_be_deleted = get_object_or_404(FoodBoard, pk=review_id)
     to_be_deleted.delete()
     return redirect('food_home')
+
+
+def new_comment(request, review_id):
+    if request.method == 'GET':
+        form = FoodForm()
+        return render(request, 'new.html', { 'form': form })
+    else:
+        form = FoodForm(request.POST, request.FILES)
+        # 입력 데이터 유효성 검사 해주기
+        if form.is_valid():
+            content = form.save(commit=False) #데이터 임시 저장(이후 살 붙이고 제대로 저장)
+            content.pub_date = timezone.now()
+            content.writer = request.user
+            content.save()
+            return redirect('food_home')
