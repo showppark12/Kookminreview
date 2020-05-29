@@ -34,6 +34,9 @@
             <br>
             {{blog.body}}</p>
         <div class="pt-5">
+          <a href ="{% url 'studyboardhome' %}" class="btn btn-primary btn-md text-white">목록으로</a>
+          <a href ="{% url 'studyboardedit' blog.id %}" class="btn btn-primary btn-md text-white">수정</a>
+          <a href ="{% url 'studyboarddelete' blog.id %}" class="btn btn-primary btn-md text-white">삭제</a>
           <p>Categories:  <a href="#">Design</a>, <a href="#">Events</a>  Tags: <a href="#">#html</a>, <a href="#">#trends</a></p>
         </div>
 

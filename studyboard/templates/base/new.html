@@ -9,7 +9,7 @@
 
         <div class="box-shadow-content">
           <div class="block-heading-1">
-            <span class="d-block mb-3 text-white" data-aos="fade-up"><span class="mx-2 text-primary">&bullet;</span>by {{blog.writer}}</span>
+            <span class="d-block mb-3 text-white" data-aos="fade-up"><span class="mx-2 text-primary">&bullet;</span> by{{blog.writer}}</span>
             <h1 class="mb-4" data-aos="fade-up" data-aos-delay="100">리뷰 작성하기</h1>
           </div>
           
@@ -28,6 +28,7 @@
         <p class="lead">
         <div class="pt-5">
           <div class="comment-form-wrap pt-5">
+          <h3 class="mb-5">Categories: <a class="mb-5" href="{%url 'studyboardhome' %}">식당</a></h3>
           <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <h3 class="mb-5">새로운 글쓰기</h3>
@@ -46,7 +47,6 @@
               <div class="form-group">
                 <input type="submit" value="작성하기" class="btn btn-primary btn-md text-white">
                 <input type="reset" value="리셋" class="btn btn-primary btn-md text-white">
-                <a href ="{% url 'home' %}" class="btn btn-primary btn-md text-white">작성취소</a>
               </div>
           </form>
           </div>
