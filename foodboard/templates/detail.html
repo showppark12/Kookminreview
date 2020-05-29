@@ -7,6 +7,7 @@
     <title>{{ review.title }}</title>
 </head>
 
+
 <body>
     <h3>{{ review.title }}</h3>
     {{ review.pub_date }}
@@ -16,7 +17,7 @@
     <hr>
     <a href="{%url 'edit' review.id %}">내용변경</a>
     <a href="{%url 'delete' review.id %}">삭제</a>
-    <a href="{%url 'home' %}">메인화면</a>
+    <a href="{%url 'food_home' %}">메인화면</a>
 </body>
 
 </html>

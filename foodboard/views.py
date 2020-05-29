@@ -26,7 +26,7 @@ def new(request):
             content = form.save(commit=False) #데이터 임시 저장(이후 살 붙이고 제대로 저장)
             content.pub_date = timezone.now()
             content.save()
-            return redirect('home')
+            return redirect('food_home')
 
 
 def edit(request, review_id):
@@ -47,4 +47,4 @@ def edit(request, review_id):
 def delete(request, review_id):
     to_be_deleted = get_object_or_404(FoodBoard, pk=review_id)
     to_be_deleted.delete()
-    return redirect('home')
+    return redirect('food_home')
