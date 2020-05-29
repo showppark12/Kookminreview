@@ -1,7 +1,12 @@
 from django import forms
-from .models import FoodBoard
+from .models import FoodBoard, FoodComment
 
 class FoodForm(forms.ModelForm):
     class Meta:
         model = FoodBoard
-        fields = ['title', 'img', 'text']
+        fields = [ 'title', 'img', 'text' ]
+
+class FoodComment(forms.ModelForm):
+    class Meta:
+        model = FoodComment
+        fields = [ 'text' ]

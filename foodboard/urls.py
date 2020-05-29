@@ -10,4 +10,6 @@ urlpatterns = [
     path('new/', views.new, name="new"),
     path('edit/<int:review_id>', views.edit, name="edit"),
     path('delete/<int:review_id>', views.delete, name="delete"),
+
+    # 덧글 CRUD 구현
 ] 
