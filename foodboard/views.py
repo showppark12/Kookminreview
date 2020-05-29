@@ -20,6 +20,7 @@ def FBoardNew(request):
     #2. 정보가 입력되지 않은 빈칸으로 되어있는 페이지 보여주기 -> get 방식
     if request.method == 'GET':
         form = FoodForm()
+        form.writer = request.user
         return render(request, 'FBoardNew.html', { 'form': form })
     else:
         form = FoodForm(request.POST, request.FILES)
@@ -40,6 +41,8 @@ def FBoardEdit(request, review_id):
         edit_review.title = request.POST['title']
         edit_review.img = request.FILES['img']
         edit_review.text = request.POST['text']
+        edit_view.pub_date = timezone.now()
+        edit_view.writer = request.user
         edit_review.save()
         return redirect('food_home')
     return render(request, 'FBoardEdit.html', {'form': form })
