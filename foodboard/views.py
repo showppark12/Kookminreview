@@ -45,7 +45,7 @@ def edit(request, review_id):
             content.writer = request.user
             content.save()
             return redirect('detail', content.id)
-    return render(request, 'edit.html', { 'form': form, 'id': edit_review.id })
+    return render(request, 'edit.html', { 'form': form })
 
 
 def delete(request, review_id):
@@ -67,3 +67,9 @@ def new_comment(request, review_id):
             content.writer = request.user
             content.save()
             return redirect('food_home')
+
+def edit_comment(request, comment_id):
+    pass
+
+def delete_comment(request, comment_id):
+    pass
