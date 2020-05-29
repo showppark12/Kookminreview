@@ -10,7 +10,7 @@
                 <div class="box-shadow-content">
                     <div class="block-heading-1">
                         <span class="d-block mb-3 text-white" data-aos="fade-up">by {{ form.writer }}</span>
-                        <h1 class="mb-4" data-aos="fade-up" data-aos-delay="100">리뷰 수정하기</h1>
+                        <input class="h3 mb-4 text-white" data-aos="fade-up" data-aos-delay="100" name="title" autofocus style="background-color: transparent; border: 0; outline: 0; width:70%; text-align:center; text-overflow: ellipsis;" value="{{ form.title }}">
                     </div>
                 </div>
             </div>
@@ -22,22 +22,17 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 blog-content">
-                <div class="pt-5">
-                    <div class="comment-form-wrap pt-5">
+                    <div class="comment-form-wrap">
                         <h3 class="mb-5">Categories: <a class="mb-5" href="{%url 'food_home' %}">식당</a></h3>
                         <form method="POST" enctype="multipart/form-data">               
-                            {% csrf_token %}             
-                            <div class="form-group">
-                                <label for="title">제목</label>
-                                <input type="text" class="form-control" id="title" name="title" value="{{ form.title }}">
-                            </div>
+                            {% csrf_token %}   
                             <div class="form-group">
                                 <label for="img">사진</label>
                                 <input type="file" class="form-control" id="img" name="img" value="{{ form.img.url }}">
                             </div>
                             <div class="form-group">
                                 <label for="text">내용</label>
-                                <input type="text" class="form-control" id="text" name="text" value="{{ form.text }}">
+                                <textarea type="text" class="form-control" id="text" name="text" rows="10">{{ form.text }}</textarea>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-md text-white">작성하기</button>
@@ -46,7 +41,6 @@
                             </div>
                         </form>
                     </div>
-                </div>
 
             </div>
             <div class="col-md-4 sidebar">
