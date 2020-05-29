@@ -13,5 +13,8 @@ class Blog(models.Model):
     def __str__(self):
         return self.title
 
-    def summary(self):
-        return self.body[:100]
+class StudyComment(models.Model):
+    writer = models.ForeignKey(User, on_delete=models.CASCADE)
+    board = models.ForeignKey(Blog,on_delete=models.CASCADE)
+    text = models.TextField()
+    modify_date = models.DateTimeField(auto_now_add=True)
