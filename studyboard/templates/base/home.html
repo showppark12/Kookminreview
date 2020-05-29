@@ -1,0 +1,18 @@
+{%extends 'index.html'%}
+{% block content %}
+<h1>StudyBoard</h1>
+<a href="{%url 'studyboardnew' %}">new</a>
+{% for blog in blogs.all %}
+<hr>
+<a href="{%url 'studyboarddetail' blog.id %}">
+    <h2>{{blog.title}}</h2>
+    <p>{{blog.pub_date}}</p>
+    <p>{{blog.summary}}</p>
+    <br>
+    {% if blog.image %}
+    <img src="{{ blog.image.url }}" alt="">
+    {% endif %}
+
+    <br><br>
+{%endfor%}
+{% endblock %}
