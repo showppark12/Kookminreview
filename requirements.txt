@@ -1,5 +1,12 @@
 asgiref==3.2.7
+backcall==0.1.0
+colorama==0.4.3
+cycler==0.10.0
+decorator==4.4.1
 Django==3.0.6
 Pillow==7.1.2
 pytz==2020.1
 sqlparse==0.3.1
+tornado==6.0.3
+traitlets==4.3.3
+wcwidth==0.1.7
