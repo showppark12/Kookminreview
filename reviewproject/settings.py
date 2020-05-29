@@ -113,5 +113,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
- os.path.join(BASE_DIR, 'static/'),
+ os.path.join(BASE_DIR, '/static/'),
 )
+
+MEDIA_URL = '/media/' #미디어 파일 요청 받을 url 주소
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #media파일이 저장되는 위치

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+</style>
+
+<body>
+    <div class="container">
+        <h1>글 수정하기</h1>
+        <form action="{%url 'studyboardupdate' blog.id%}" method="POST">
+            {%csrf_token%}
+            제목: <input type="text" value="{{blog.title}}" name="title">
+            <br>
+            <br>
+            본문:<textarea name="body" id="" cols="40" rows="15">{{blog.body}}</textarea>
+            <br>
+            <!-- <button type="submit">작성!</button> -->
+            <button type="submit" class="btn btn-dark">edit</button>
+        </form>
+    </div>
+</body>
+
+</html>
