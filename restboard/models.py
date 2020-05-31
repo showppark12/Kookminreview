@@ -11,8 +11,8 @@ class RestBoard(models.Model):
     def __str__(self):
         return self.title
 
-# class BeerBoardComment(models.Model):
-#     writer = models.ForeignKey(User, on_delete = models.CASCADE)
-#     board = models.ForeignKey(BeerBoard, on_delete = models.CASCADE, related_name="comments")
-#     text = models.TextField()
-#     pub_date = models.DateTimeField()
+class RestBoardComment(models.Model):
+    writer = models.ForeignKey(User, on_delete = models.CASCADE)
+    board = models.ForeignKey(RestBoard, on_delete = models.CASCADE, related_name="comments")
+    text = models.TextField()
+    pub_date = models.DateTimeField()

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import RestBoard
+from .models import RestBoard,RestBoardComment
 from .forms import RestBoardForm
 from django.utils import timezone
 from django.contrib.auth.models import User
@@ -12,7 +12,8 @@ def rlist(request):
 
 def rdetail(request, r_id):
     rdetail = get_object_or_404(RestBoard, pk=r_id)
-    return render(request, 'ha/rdetail.html', {'rdetail': rdetail})
+    comments = rdetail.comments.all()
+    return render(request, 'ha/rdetail.html', {'rdetail': rdetail, 'comments':comments})
 
 def rcreate(request):
     if request.method == 'POST':
@@ -45,19 +46,17 @@ def rdelete(request, r_id):
     return redirect('rlist')
 
 
-# def ccreate(request, b_id):
-#     if request.method == 'POST':
-#         new_comment = RestBoardComment()
-#         new_comment.writer = get_object_or_404(User, username=request.user)
-#         new_comment.board = get_object_or_404(RestBoard,pk = b_id)
-#         new_comment.pub_date = timezone.datetime.now()
-#         new_comment.text = request.POST['ctext']
-#         new_comment.save()
-#     return redirect('bdetail', b_id)
+def ccreate(request, r_id):
+    if request.method == 'POST':
+        new_comment = RestBoardComment()
+        new_comment.writer = get_object_or_404(User, username=request.user)
+        new_comment.board = get_object_or_404(RestBoard,pk = r_id)
+        new_comment.pub_date = timezone.datetime.now()
+        new_comment.text = request.POST['rtext']
+        new_comment.save()
+    return redirect('rdetail', r_id)
 
-
-# def edit_comment(request, comment_id):
-#     pass
-
-# def delete_comment(request, comment_id):
-#     pass
+def delete_comment(request, c_id, r_id):
+    delete_comment = RestBoardComment.objects.get(id = c_id)
+    delete_comment.delete()
+    return redirect('rdetail', r_id)
