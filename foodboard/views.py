@@ -5,22 +5,23 @@ from django.utils import timezone
 from django.contrib.auth.models import User 
 
 
-def home(request):
+def FBoardHome(request):
     reviews = FoodBoard.objects.all()
-    return render(request, "home.html", { 'reviews': reviews })
+    return render(request, "FBoardHome.html", { 'reviews': reviews })
 
 
-def detail(request, review_id):
+def FBoardDetail(request, review_id):
     review = get_object_or_404(FoodBoard, pk=review_id)
-    return render(request, 'detail.html', { 'review': review })
+    return render(request, 'FBoardDetail.html', { 'review': review })
 
 
-def new(request):
+def FBoardNew(request):
     #1, 데이터가 입력된 후 제출 버튼을 누르면 데이터 저장 -> post 방식
     #2. 정보가 입력되지 않은 빈칸으로 되어있는 페이지 보여주기 -> get 방식
     if request.method == 'GET':
         form = FoodForm()
-        return render(request, 'new.html', { 'form': form })
+        form.writer = request.user
+        return render(request, 'FBoardNew.html', { 'form': form })
     else:
         form = FoodForm(request.POST, request.FILES)
         # 입력 데이터 유효성 검사 해주기
@@ -32,23 +33,44 @@ def new(request):
             return redirect('food_home')
 
 
-def edit(request, review_id):
-    edit_review = get_object_or_404(FoodBoard, pk=review_id)
-    if request.mrethod == 'GET':
-        form = FoodFom(instance=edit_review)
+
+def FBoardEdit(request, review_id):
+    edit_review = FoodBoard.objects.get(id= review_id)
+    if request.method == 'GET':
+        form = edit_review
     else:
-        form = FoodForm(request.POST, request.FILES, instance=edit_review)
+        edit_review.title = request.POST['title']
+        edit_review.img = request.FILES['img']
+        edit_review.text = request.POST['text']
+        edit_review.pub_date = timezone.now()
+        edit_review.writer = request.user
+        edit_review.save()
+        return redirect('food_home')
+    return render(request, 'FBoardEdit.html', {'form': form })
+
+
+def FBoardDelete(request, review_id):
+    to_be_deleted = get_object_or_404(FoodBoard, pk=review_id)
+    to_be_deleted.delete()
+    return redirect('food_home')
+
+
+def new_comment(request, review_id):
+    if request.method == 'GET':
+        form = FoodForm()
+        return render(request, 'FBoardNew.html', { 'form': form })
+    else:
+        form = FoodForm(request.POST, request.FILES)
         # 입력 데이터 유효성 검사 해주기
         if form.is_valid():
             content = form.save(commit=False) #데이터 임시 저장(이후 살 붙이고 제대로 저장)
             content.pub_date = timezone.now()
             content.writer = request.user
             content.save()
-            return redirect('detail', content.id)
-    return render(request, 'edit.html', { 'form': form, 'id': edit_review.id })
+            return redirect('food_home')
 
+def edit_comment(request, comment_id):
+    pass
 
-def delete(request, review_id):
-    to_be_deleted = get_object_or_404(FoodBoard, pk=review_id)
-    to_be_deleted.delete()
-    return redirect('food_home')
+def delete_comment(request, comment_id):
+    pass

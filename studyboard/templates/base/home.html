@@ -7,7 +7,7 @@
 <a href="{%url 'studyboarddetail' blog.id %}">
     <h2>{{blog.title}}</h2>
     <p>{{blog.pub_date}}</p>
-    <p>{{blog.summary}}</p>
+    <p>{{blog.body}}</p>
     <br>
     {% if blog.image %}
     <img src="{{ blog.image.url }}" alt="">

@@ -20,10 +20,16 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 blog-content">
-                {% if review.img %} <img src="{{ review.img.src }}"> {% endif %}
+                {% if review.img %} <img src="{{ review.img.url }}"> {% endif %}
                 <p>{{ review.text }}</p>
                 <div class="pt-5">
                     <p>Categories: <a href="{%url 'food_home' %}">식당</a></p>
+                </div>
+
+                <div class="button-group" style="padding-top: 0;">
+                    <a href="{% url 'FBoardEdit' review.id %}" class="btn btn-outline-primary btn-md">수정</a>
+                    <a href="{% url 'FBoardDelete' review.id %}" class="btn btn-outline-primary btn-md">삭제</a>
+                    <a href="{% url 'food_home' %}" class="btn btn-primary btn-md text-white">목록으로</a>
                 </div>
 
                 <!-- 덧글 -->
@@ -88,7 +94,7 @@
                     <div class="categories">
                         <h3>Categories</h3>
                         <li>
-                            <a href="{% url 'food_home' %}">공부할곳<span>(12)</span></a>
+                            <a href="{% url 'studyboardhome' %}">공부할곳<span>(12)</span></a>
                         </li>
                         <li>
                             <a href="{% url 'food_home' %}">쉴곳<span>(22)</span></a>
