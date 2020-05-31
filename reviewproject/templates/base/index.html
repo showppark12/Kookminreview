@@ -79,11 +79,28 @@
                     <div class="col-12">
                         <nav class="site-navigation text-right ml-auto " role="navigation">
                             <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
-                                <li><a href="#home-section" class="nav-link">Home</a></li>
-                                <li><a href="#services-section" class="nav-link">공부할곳</a></li>
-                                <li><a href="{% url 'rlist' %}" class="nav-link">쉴곳</a></li>
-                                <li><a href="#testimonials-section" class="nav-link">음식점</a></li>
+                                <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                                <li><a href="{% url 'studyboardhome' %}" class="nav-link">공부할곳</a></li>
+                                <li><a href="#" class="nav-link">쉴곳</a></li>
+                                <li><a href="{% url 'food_home'%}" class="nav-link">음식점</a></li>
                                 <li><a href="{% url 'blist'%}" class="nav-link">술집</a></li>
+                                {%if not user.is_authenticated %}
+                                <li class="has-children">
+                                    <a href="#about-section" class="nav-link">로그인</a>
+                                    <ul class="dropdown arrow-top">
+                                      <li><a href="{% url 'login'%}" class="nav-link">로그인</a></li>
+                                      <li><a href="{% url 'register'%}" class="nav-link">회원가입</a></li>
+                                    </ul>
+                                  </li>
+                                {% else %}
+                                <li class="has-children">
+                                    <a href="#about-section" class="nav-link">{{request.user.username}}님 환영합니다.</a>
+                                    <ul class="dropdown arrow-top">
+                                      <li><a href="#team-section" class="nav-link">스크랩한 글</a></li>
+                                      <li><a href="{%url 'logout'%}" class="nav-link">로그아웃</a></li>
+                                    </ul>
+                                  </li>
+                                  {% endif %}
                             </ul>
                         </nav>
                     </div>
