@@ -10,5 +10,6 @@ urlpatterns = [
     path('create', views.rcreate, name="rcreate"),
     path('update/<int:r_id>', views.rupdate, name="rupdate"),
     path('delete/<int:r_id>', views.rdelete, name="rdelete"),
-    # path('ccreate/<int:r_id>', views.ccreate, name= "ccreate"),
+    path('rcreate/<int:r_id>', views.ccreate, name= "rcreate"),
+    path('rdelete_comment/<int:c_id>/<int:r_id>', views.delete_comment, name= "rdelete_comment")
 ]

@@ -15,6 +15,6 @@ class Blog(models.Model):
 
 class StudyComment(models.Model):
     writer = models.ForeignKey(User, on_delete=models.CASCADE)
-    board = models.ForeignKey(Blog,on_delete=models.CASCADE)
+    board = models.ForeignKey(Blog,on_delete=models.CASCADE, related_name='comments')
     text = models.TextField()
     modify_date = models.DateTimeField(auto_now_add=True)

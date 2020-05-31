@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Blog
+from .models import Blog,StudyComment
 from django.utils import timezone
 from .form import BlogForm
+from django.contrib.auth.models import User
 
 # Create your views here.
 def home(request):
@@ -10,7 +11,8 @@ def home(request):
 
 def detail(request,blog_id):
     blog = get_object_or_404(Blog, pk = blog_id)
-    return render(request, 'base/detail.html',{'blog':blog})
+    comments = blog.comments.all()
+    return render(request, 'base/detail.html',{'blog':blog, 'comments': comments})
 
 def new(request):
     # 1. 데이터가 입력 된 후 제출 버튼을 누르고 데이터저장 =  post
@@ -25,6 +27,7 @@ def new(request):
             return redirect('studyboardhome')
     else:
         form = BlogForm()
+        form.writer = request.user
         return render(request,'base/new.html',{'form':form})
 
 def create(request):
@@ -51,3 +54,21 @@ def delete(request,blog_id):
     delete_blog = get_object_or_404(Blog, pk = blog_id)
     delete_blog.delete()
     return redirect('studyboardhome')
+
+def sccreate(request, b_id):
+    if request.method == 'POST':
+        new_comment = StudyComment()
+        new_comment.writer = get_object_or_404(User, username=request.user)
+        new_comment.board = get_object_or_404(Blog,pk = b_id)
+        new_comment.modify_date = timezone.datetime.now()
+        new_comment.text = request.POST['sctext']
+        new_comment.save()
+    return redirect('studyboarddetail', b_id)
+
+
+def sdelete_comment(request, c_id):
+    comment = get_object_or_404(StudyComment, pk=c_id)
+    b_id = comment.board.id
+    comment.delete()
+    return redirect('studyboarddetail', b_id)
+
