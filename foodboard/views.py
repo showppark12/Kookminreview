@@ -41,8 +41,8 @@ def FBoardEdit(request, review_id):
         edit_review.title = request.POST['title']
         edit_review.img = request.FILES['img']
         edit_review.text = request.POST['text']
-        edit_view.pub_date = timezone.now()
-        edit_view.writer = request.user
+        edit_review.pub_date = timezone.now()
+        edit_review.writer = request.user
         edit_review.save()
         return redirect('food_home')
     return render(request, 'FBoardEdit.html', {'form': form })
