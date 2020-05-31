@@ -1,15 +1,18 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-# Create your models here.
-
-class Blog(models.Model):
-    title = models.CharField(max_length=100)
+class RestBoard(models.Model):
+    title = models.CharField(max_length = 200)
+    writer = models.ForeignKey(User, on_delete=models.CASCADE)
     pub_date = models.DateTimeField()
-    body = models.TextField()
-    image = models.ImageField(upload_to="blog/", blank=True, null=True) #media/blog/파일이름
-    
+    img = models.ImageField(upload_to='beerboard/', blank=True, null=True)
+    text = models.TextField()
+
     def __str__(self):
         return self.title
-    
-    def summary(self):
-        return self.body[:100]
+
+# class BeerBoardComment(models.Model):
+#     writer = models.ForeignKey(User, on_delete = models.CASCADE)
+#     board = models.ForeignKey(BeerBoard, on_delete = models.CASCADE, related_name="comments")
+#     text = models.TextField()
+#     pub_date = models.DateTimeField()

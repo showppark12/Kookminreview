@@ -9,6 +9,7 @@ urlpatterns = [
     path('studyboard/',include('studyboard.urls')),
     path('account/', include('account.urls')),
     path('food/', include('foodboard.urls')),
+    path('rest/', include('restboard.urls')),
     path('beer/', include('beerboard.urls')),
 ]
 
