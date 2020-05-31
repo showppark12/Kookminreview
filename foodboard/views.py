@@ -33,6 +33,7 @@ def FBoardNew(request):
             return redirect('food_home')
 
 
+
 def FBoardEdit(request, review_id):
     edit_review = FoodBoard.objects.get(id= review_id)
     if request.method == 'GET':
