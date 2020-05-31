@@ -31,6 +31,8 @@ INSTALLED_APPS = [
     'foodboard',
     'restboard',
     'account',
+    'django_fields',
+
 ]
 
 MIDDLEWARE = [
