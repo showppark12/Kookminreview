@@ -1,6 +1,6 @@
 {%extends 'index.html'%}
 {% block content%}
-
+<form method="POST" enctype="multipart/form-data">
 <div class="site-section-cover overlay inner-page bg-light" style="background-image: url('/static/images/hero_3.jpg')" data-aos="fade">
   
   <div class="container">
@@ -10,7 +10,7 @@
         <div class="box-shadow-content">
           <div class="block-heading-1">
             <span class="d-block mb-3 text-white" data-aos="fade-up"><span class="mx-2 text-primary">&bullet;</span> by{{blog.writer}}</span>
-            <h1 class="mb-4" data-aos="fade-up" data-aos-delay="100">리뷰 작성하기</h1>
+            <input class="h3 mb-4 text-white" data-aos="fade-up" data-aos-delay="100" name="title" autofocus style="background-color: transparent; border: 0; outline: 0; width:70%; text-align:center; text-overflow: ellipsis;" placeholder="제목을 입력하세요.">
           </div>
           
           
@@ -26,31 +26,24 @@
     <div class="row">
       <div class="col-md-8 blog-content">
         <p class="lead">
-        <div class="pt-5">
-          <div class="comment-form-wrap pt-5">
-          <h3 class="mb-5">Categories: <a class="mb-5" href="{%url 'studyboardhome' %}">식당</a></h3>
-          <form method="post" enctype="multipart/form-data">
+          <div class="comment-form-wrap">
+          <h3 class="mb-5">Categories: <a class="mb-5" href="{%url 'studyboardhome' %}">공부할 곳</a></h3>
             {% csrf_token %}
-            <h3 class="mb-5">새로운 글쓰기</h3>
-              <div class="form-group">
-                <label for="name">제목</label>
-                <input type="text" class="form-control" id="name" name = "title">
-              </div>
               <div class="form-group">
                 <label for="img">사진</label>
                 <input type="file" class="form-control" id="image" name = "image">
               </div>
               <div class="form-group">
                 <label for="text">내용</label>
-                <input type="text" class="form-control" id="text" name = "body">
+                <textarea type="text" class="form-control" id="body" name="body" rows="10"></textarea>
               </div>
               <div class="form-group">
-                <input type="submit" value="작성하기" class="btn btn-primary btn-md text-white">
-                <input type="reset" value="리셋" class="btn btn-primary btn-md text-white">
+                <button type="submit" class="btn btn-primary btn-md text-white">작성하기</button>
+                <button type="reset" class="btn btn-primary btn-md text-white">초기화</button>
+                <a href="{% url 'home' %}" class="btn btn-primary btn-md text-white">작성취소</a>
               </div>
           </form>
           </div>
-        </div>
 
       </div>
       <div class="col-md-4 sidebar">
@@ -65,11 +58,14 @@
         <div class="sidebar-box">
           <div class="categories">
             <h3>Categories</h3>
-            <li><a href="#">Creatives <span>(12)</span></a></li>
-            <li><a href="#">News <span>(22)</span></a></li>
-            <li><a href="#">Design <span>(37)</span></a></li>
-            <li><a href="#">HTML <span>(42)</span></a></li>
-            <li><a href="#">Web Development <span>(14)</span></a></li>
+            <li>
+              <a href="{% url 'studyboardhome' %}">공부할곳<span>(12)</span></a>
+          </li>
+          <li>
+              <a href="{% url 'food_home' %}">쉴곳<span>(22)</span></a>
+          </li>
+          <li><a href="{% url 'food_home' %}">음식점<span>(37)</span></a></li>
+          <li><a href="{% url 'food_home' %}">술집<span>(42)</span></a></li>
           </div>
         </div>
         <div class="sidebar-box">

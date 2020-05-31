@@ -33,11 +33,13 @@
             {% endif %}
             <br>
             {{blog.body}}</p>
+            <div class="pt-5">
+              <p>Categories: <a href="{%url 'studyboardhome' %}">공부할 곳</a></p>
+          </div>
         <div class="pt-5">
+          <a href ="{% url 'studyboardedit' blog.id %}" class="btn btn-outline-primary btn-md">수정</a>
+          <a href ="{% url 'studyboarddelete' blog.id %}" class="btn btn-outline-primary btn-md">삭제</a>
           <a href ="{% url 'studyboardhome' %}" class="btn btn-primary btn-md text-white">목록으로</a>
-          <a href ="{% url 'studyboardedit' blog.id %}" class="btn btn-primary btn-md text-white">수정</a>
-          <a href ="{% url 'studyboarddelete' blog.id %}" class="btn btn-primary btn-md text-white">삭제</a>
-          <p>Categories:  <a href="#">Design</a>, <a href="#">Events</a>  Tags: <a href="#">#html</a>, <a href="#">#trends</a></p>
         </div>
 
 
@@ -166,11 +168,13 @@
         <div class="sidebar-box">
           <div class="categories">
             <h3>Categories</h3>
-            <li><a href="#">Creatives <span>(12)</span></a></li>
-            <li><a href="#">News <span>(22)</span></a></li>
-            <li><a href="#">Design <span>(37)</span></a></li>
-            <li><a href="#">HTML <span>(42)</span></a></li>
-            <li><a href="#">Web Development <span>(14)</span></a></li>
+            <li><a href="{% url 'studyboardhome' %}">공부할곳<span>(12)</span></a>
+          </li>
+          <li>
+              <a href="{% url 'food_home' %}">쉴곳<span>(22)</span></a>
+          </li>
+          <li><a href="{% url 'food_home' %}">음식점<span>(37)</span></a></li>
+          <li><a href="{% url 'food_home' %}">술집<span>(42)</span></a></li>
           </div>
         </div>
         <div class="sidebar-box">
