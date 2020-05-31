@@ -61,5 +61,8 @@ def ccreate(request, b_id):
 # def edit_comment(request, comment_id):
 #     pass
 
-# def delete_comment(request, comment_id):
-#     pass
+def delete_comment(request, c_id):
+    comment = get_object_or_404(BeerBoardComment, pk=c_id)
+    b_id = comment.board.id
+    comment.delete()
+    return redirect('bdetail', b_id)
