@@ -27,8 +27,10 @@
                 </div>
 
                 <div class="button-group" style="padding-top: 0;">
+                    {% if user == request.user %}
                     <a href="{% url 'FBoardEdit' review.id %}" class="btn btn-outline-primary btn-md">수정</a>
                     <a href="{% url 'FBoardDelete' review.id %}" class="btn btn-outline-primary btn-md">삭제</a>
+                    {% endif %}
                     <a href="{% url 'food_home' %}" class="btn btn-primary btn-md text-white">목록으로</a>
                 </div>
 
