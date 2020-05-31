@@ -37,7 +37,7 @@ def create(request):
 
 def edit(request,blog_id):
     edit_blog = get_object_or_404(Blog,pk=blog_id)
-    return render(request, 'edit.html',{'blog':edit_blog})
+    return render(request, 'base/edit.html',{'blog':edit_blog})
 
 def update(request,blog_id):
     update_blog = get_object_or_404(Blog,pk = blog_id)
