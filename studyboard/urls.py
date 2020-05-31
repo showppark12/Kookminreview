@@ -10,4 +10,6 @@ urlpatterns = [
     path('update/<int:blog_id>',studyboard.views.update,name ="studyboardupdate"),
     path('delete/<int:blog_id>',studyboard.views.delete, name = "studyboarddelete"),
     path('<int:blog_id>',studyboard.views.detail, name = "studyboarddetail"),
+    path('sdelete_comment/<int:c_id>', studyboard.views.sdelete_comment, name= "sdelete_comment"),
+    path('sccreate/<int:b_id>', studyboard.views.sccreate, name= "sccreate"),
 ]
