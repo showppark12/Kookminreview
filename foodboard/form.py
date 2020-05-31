@@ -6,7 +6,7 @@ class FoodForm(forms.ModelForm):
         model = FoodBoard
         fields = [ 'title', 'img', 'text' ]
 
-class FoodComment(forms.ModelForm):
+class FoodCommentForm(forms.ModelForm):
     class Meta:
         model = FoodComment
         fields = [ 'text' ]
