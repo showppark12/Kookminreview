@@ -34,8 +34,8 @@ def new(request):
 
 def edit(request, review_id):
     edit_review = get_object_or_404(FoodBoard, pk=review_id)
-    if request.method == 'GET':
-        form = FoodForm(instance=edit_review)
+    if request.mrethod == 'GET':
+        form = FoodFom(instance=edit_review)
     else:
         form = FoodForm(request.POST, request.FILES, instance=edit_review)
         # 입력 데이터 유효성 검사 해주기

@@ -3,10 +3,12 @@ from django.urls import path,include
 from . import views
 
 urlpatterns = [
-    path('<int:restboard_id>', views.detail, name = "detail"),
-    path('new',views.new, name="new"),
-    path('create',views.create, name = "create"),
-    path('edit/<int:restboard_id>',views.edit, name = "edit"),
-    path('update/<int:restboard_id>',views.update, name = "update"),
-    path('delete/<int:restboard_id>',views.delete, name = "delete"),
+    path('', views.rlist, name="rlist"),
+
+    # 보드 CRUD 구현
+    path('<int:r_id>', views.rdetail, name="rdetail"),
+    path('create', views.rcreate, name="rcreate"),
+    path('update/<int:r_id>', views.rupdate, name="rupdate"),
+    path('delete/<int:r_id>', views.rdelete, name="rdelete"),
+    # path('ccreate/<int:r_id>', views.ccreate, name= "ccreate"),
 ]
