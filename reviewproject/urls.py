@@ -9,6 +9,7 @@ urlpatterns = [
     path('studyboard/',include('studyboard.urls')),
     path('account/', include('account.urls')),
     path('food/', include('foodboard.urls')),
+    path('beer/', include('beerboard.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
