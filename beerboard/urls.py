@@ -11,4 +11,5 @@ urlpatterns = [
     path('update/<int:b_id>', views.bupdate, name="bupdate"),
     path('delete/<int:b_id>', views.bdelete, name="bdelete"),
     path('ccreate/<int:b_id>', views.ccreate, name= "ccreate"),
+    path('delete_comment/<int:c_id>', views.delete_comment, name= "delete_comment"),
 ]

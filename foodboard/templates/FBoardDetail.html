@@ -27,57 +27,47 @@
                 </div>
 
                 <div class="button-group" style="padding-top: 0;">
-                    {% if user == request.user %}
-                    <a href="{% url 'FBoardEdit' review.id %}" class="btn btn-outline-primary btn-md">수정</a>
-                    <a href="{% url 'FBoardDelete' review.id %}" class="btn btn-outline-primary btn-md">삭제</a>
+                    {% if user.is_authenticated %}
+                        {% if review.writer.username == request.user.username %}
+                            <a href="#" class="btn btn-outline-primary btn-md">수정</a>
+                            <a href="{% url 'FBoardDelete' review.id %}" class="btn btn-outline-primary btn-md">삭제</a>    
+                        {% endif %}
                     {% endif %}
                     <a href="{% url 'food_home' %}" class="btn btn-primary btn-md text-white">목록으로</a>
                 </div>
 
                 <!-- 덧글 -->
                 <div class="pt-5">
-                    <h3 class="mb-5">1 Comments</h3>
+                    <h3 class="mb-5">Comments</h3>
                     <ul class="comment-list">
-                        <li class="comment">
-                            <div class="vcard bio">
-                                <img src="/static/images/person_2.jpg" alt="Image">
-                            </div>
-                            <div class="comment-body">
-                                <h3>Jacob Smith</h3>
-                                <div class="meta">January 9, 2018 at 2:21pm</div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus,
-                                    nihil?
-                                </p>
-                                <p><a href="#" class="reply">Reply</a></p>
-                            </div>
-                        </li>
+                      {% for c in comments %}
+                      <li class="comment">
+                        <div class="vcard bio">
+                          <img src="/static/images/person_2.jpg" alt="Image">
+                        </div>
+                        <div class="comment-body">
+                            <h3>{{c.writer}}</h3>
+                            <div class="meta">{{c.modify_date}}</div>
+                            <p>{{c.text}}</p>
+                            <p><a href="{% url 'FDelComment' c.id %}" class="reply" style="float :right; margin-right: 0.3rem;">삭제</a></p>
+                            <p><a href="{% url 'FEditComment' c.id %}" class="reply" style="float :right; margin-right: 0.3rem;">수정</a></p>
+                        </div>
+                      </li>
+                      {%endfor%}
                     </ul>
                     <!-- END comment-list -->
 
                     <div class="comment-form-wrap pt-5">
                         <h3 class="mb-5">Leave a comment</h3>
-                        <form action="#" class="">
+                        <form action="{% url 'FNewComment' review.id %}" method="POST" class="">
+                            {% csrf_token %}
                             <div class="form-group">
-                                <label for="name">Name *</label>
-                                <input type="text" class="form-control" id="name">
+                                <label for="name">Message</label>
+                                <input type="text" class="form-control" id="name" name="text">
                             </div>
                             <div class="form-group">
-                                <label for="email">Email *</label>
-                                <input type="email" class="form-control" id="email">
-                            </div>
-                            <div class="form-group">
-                                <label for="website">Website</label>
-                                <input type="url" class="form-control" id="website">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" value="Post Comment" class="btn btn-primary btn-md text-white">
-                            </div>
-
+                                <input type="submit" value="댓글 작성" class="btn btn-primary btn-md text-white">
+                              </div>
                         </form>
                     </div>
                 </div>
