@@ -8,6 +8,7 @@ class FoodBoard(models.Model):
     pub_date = models.DateTimeField()
     img = models.ImageField(upload_to='foodboard/', blank=True, null=True)
     text = models.TextField()
+    fscrap_users = models.ManyToManyField(User, related_name="fscraps")
 
     def __str__(self):
         return self.title

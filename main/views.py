@@ -34,3 +34,10 @@ def register_view(request):
     else:
         form = UserCreationForm()
     return render(request, 'main/signup.html', { 'form': form })
+
+
+def scrap(request):
+    user = request.user
+    if user.is_authenticated:
+        return render(request, 'main/scrap.html')
+    return render(request, 'main/signin.html', {'form': AuthenticationForm() })

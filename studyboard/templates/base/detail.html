@@ -35,14 +35,22 @@
           {% endif %}
           <br>
           {{blog.body}}</p>
-        <div class="pt-5">
-          <p>Categories: <a href="{%url 'studyboardhome' %}">공부할 곳</a></p>
-        </div>
-        <div class="pt-5">
-          <a href="{% url 'studyboardedit' blog.id %}" class="btn btn-outline-primary btn-md">수정</a>
-          <a href="{% url 'studyboarddelete' blog.id %}" class="btn btn-outline-primary btn-md">삭제</a>
+
+        <div class="button-group" style="padding-top: 0;">
+          <!-- 수정, 삭제 버튼 이렇게 수정하면 더 좋을 거 같아요 / 작성자 같은 사람만 버튼 볼 수 있게 하기-->
+          {% if user.is_authenticated %}
+              {% if blog.writer.username == request.user.username %}
+                  <a href="{% url 'studyboardedit' blog.id %}" class="btn btn-outline-primary btn-md">수정</a>
+                  <a href="{% url 'studyboarddelete' blog.id %}" class="btn btn-outline-primary btn-md">삭제</a>    
+              {% endif %}
+              {% if blog not in user.sscraps.all %}
+                  <a href="{% url 'studyboardscrap' blog.id %}" class="btn btn-primary btn-md text-white">스크랩</a>
+              {% else %}
+                  <a href="{% url 'studyboardrscrap' blog.id %}" class="btn btn-primary btn-md text-white">스크랩 취소</a>
+              {% endif %}
+          {% endif %}
           <a href="{% url 'studyboardhome' %}" class="btn btn-primary btn-md text-white">목록으로</a>
-        </div>
+      </div>
 
 
         <div class="pt-5">
