@@ -68,7 +68,6 @@ def FBoardRemoveScrap(request, review_id):
         return redirect('scrap')
     return redirect('FBoardDetail', review_id)
 
-
 def new_comment(request, review_id):
     if request.method == 'POST':
         new_comment = FoodComment()

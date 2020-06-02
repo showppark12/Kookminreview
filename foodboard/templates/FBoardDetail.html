@@ -56,7 +56,6 @@
                             <div class="meta">{{c.modify_date}}</div>
                             <p>{{c.text}}</p>
                             <p><a href="{% url 'FDelComment' c.id %}" class="reply" style="float :right; margin-right: 0.3rem;">삭제</a></p>
-                            <p><a href="{% url 'FEditComment' c.id %}" class="reply" style="float :right; margin-right: 0.3rem;">수정</a></p>
                         </div>
                       </li>
                       {%endfor%}
@@ -81,12 +80,10 @@
             </div>
             <div class="col-md-4 sidebar">
                 <div class="sidebar-box">
-                    <form action="#" class="search-form">
-                        <div class="form-group">
-                            <span class="icon fa fa-search"></span>
-                            <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
-                        </div>
-                    </form>
+                    <img src="/static/images/person_1.jpg" alt="Image" class="img-fluid mb-4 w-50 rounded-circle">
+                    <h3 class="text-black">Created by {{ review.writer }}</h3>
+                    <p></p>
+                    <p><a href="#" class="btn btn-primary btn-md text-white">{{ review.writer.email }}</a></p>
                 </div>
                 <div class="sidebar-box">
                     <div class="categories">
@@ -95,18 +92,22 @@
                             <a href="{% url 'studyboardhome' %}">공부할곳<span>(12)</span></a>
                         </li>
                         <li>
-                            <a href="{% url 'food_home' %}">쉴곳<span>(22)</span></a>
+                            <a href="{% url 'rlist' %}">쉴곳<span>(22)</span></a>
                         </li>
                         <li><a href="{% url 'food_home' %}">음식점<span>(37)</span></a></li>
-                        <li><a href="{% url 'food_home' %}">술집<span>(42)</span></a></li>
+                        <li><a href="{% url 'blist' %}">술집<span>(42)</span></a></li>
                     </div>
                 </div>
                 <div class="sidebar-box">
-                    <img src="/static/images/person_1.jpg" alt="Image" class="img-fluid mb-4 w-50 rounded-circle">
-                    <h3 class="text-black">Created by {{ review.writer }}</h3>
-                    <p></p>
-                    <p><a href="#" class="btn btn-primary btn-md text-white">{{ review.writer.email }}</a></p>
+                    <form action="#" class="search-form">
+                        <div class="form-group">
+                            <span class="icon fa fa-search"></span>
+                            <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
+                        </div>
+                    </form>
                 </div>
+
+
 
                 <div class="sidebar-box">
                     <h3>Paragraph</h3>

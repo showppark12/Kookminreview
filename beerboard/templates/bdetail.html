@@ -9,8 +9,8 @@
 
         <div class="box-shadow-content">
           <div class="block-heading-1">
-            <span class="d-block mb-3 text-white" data-aos="fade-up">{{bdetail.pub_date}} <span
-                class="mx-2 text-primary">&bullet;</span>{{bdetail.writer}}</span>
+            <span class="d-block mb-3 text-white" data-aos="fade-up">{{bdetail.pub_date}}
+            <span class="mx-2 text-primary">&bullet;</span>by {{bdetail.writer}}</span>
             <h1 class="mb-4" data-aos="fade-up" data-aos-delay="100">{{bdetail.title}}</h1>
           </div>
         </div>
@@ -63,8 +63,7 @@
                 <h3>{{c.writer}}</h3>
                 <div class="meta">{{c.pub_date}}</div>
                 <p>{{c.text}}</p>
-                <p><a href="#" class="reply" style="float :right">수정</a></p>
-                <p><a href="{% url 'delete_comment' c.id %}" class="cdelete" style="float :right">삭제</a></p>
+                <p><a href="{% url 'delete_comment' c.id %}" class="reply" style="float :right">삭제</a></p>
               </div>
             </li>
             {%endfor%}
@@ -91,6 +90,24 @@
       </div>
       <div class="col-md-4 sidebar">
         <div class="sidebar-box">
+          <img src="/static/images/person_1.jpg" alt="Image" class="img-fluid mb-4 w-50 rounded-circle">
+          <h3 class="text-black">{{bdetail.writer}}</h3>
+          <p>유저 확장 제대로 한다면 이 모든게 채워질거야 ~</p>
+          <p><a href="#" class="btn btn-primary btn-md text-white">Read More</a></p>
+        </div>
+        <div class="sidebar-box">
+          <div class="categories">
+            <h3>Categories</h3>
+            <li><a href="{% url 'studyboardhome' %}">공부할곳<span>(12)</span></a>
+            </li>
+            <li>
+              <a href="{% url 'rlist' %}">쉴곳<span>(22)</span></a>
+            </li>
+            <li><a href="{% url 'food_home' %}">음식점<span>(37)</span></a></li>
+            <li><a href="{% url 'blist' %}">술집<span>(42)</span></a></li>
+          </div>
+        </div>
+        <div class="sidebar-box">
           <form action="#" class="search-form">
             <div class="form-group">
               <span class="icon fa fa-search"></span>
@@ -98,22 +115,8 @@
             </div>
           </form>
         </div>
-        <div class="sidebar-box">
-          <div class="categories">
-            <h3>Categories</h3>
-            <li><a href="#">Creatives <span>(12)</span></a></li>
-            <li><a href="#">News <span>(22)</span></a></li>
-            <li><a href="#">Design <span>(37)</span></a></li>
-            <li><a href="#">HTML <span>(42)</span></a></li>
-            <li><a href="#">Web Development <span>(14)</span></a></li>
-          </div>
-        </div>
-        <div class="sidebar-box">
-          <img src="/static/images/person_1.jpg" alt="Image" class="img-fluid mb-4 w-50 rounded-circle">
-          <h3 class="text-black">{{bdetail.writer}}</h3>
-          <p>유저 확장 제대로 한다면 이 모든게 채워질거야 ~</p>
-          <p><a href="#" class="btn btn-primary btn-md text-white">Read More</a></p>
-        </div>
+
+
 
         <div class="sidebar-box">
           <h3>Paragraph</h3>
