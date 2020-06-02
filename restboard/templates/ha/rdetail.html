@@ -32,17 +32,17 @@
             <div class="button-group" style="padding-top: 0;">
               <!-- 수정, 삭제 버튼 이렇게 수정하면 더 좋을 거 같아요 / 작성자 같은 사람만 버튼 볼 수 있게 하기-->
               {% if user.is_authenticated %}
-                  {% if review.writer.username == request.user.username %}
-                      <a href="{% url 'FBoardEdit' review.id %}" class="btn btn-outline-primary btn-md">수정</a>
-                      <a href="{% url 'FBoardDelete' review.id %}" class="btn btn-outline-primary btn-md">삭제</a>    
+                  {% if rdetail.writer.username == request.user.username %}
+                      <a href="{% url 'rupdate' rdetail.id %}" class="btn btn-outline-primary btn-md">수정</a>
+                      <a href="{% url 'rdelete' rdetail.id %}" class="btn btn-outline-primary btn-md">삭제</a>    
                   {% endif %}
-                  {% if review not in user.fscraps.all %}
-                      <a href="{% url 'FBoardScrap' review.id %}" class="btn btn-primary btn-md text-white">스크랩</a>
+                  {% if rscrap not in user.rscraps.all %}
+                      <a href="{% url 'rscrap' rdetail.id %}" class="btn btn-primary btn-md text-white">스크랩</a>
                   {% else %}
-                      <a href="{% url 'FBoardRemoveScrap' review.id %}" class="btn btn-primary btn-md text-white">스크랩 취소</a>
+                      <a href="{% url 'rrscrap' rdetail.id %}" class="btn btn-primary btn-md text-white">스크랩 취소</a>
                   {% endif %}
               {% endif %}
-              <a href="{% url 'food_home' %}" class="btn btn-primary btn-md text-white">목록으로</a>
+              <a href="{% url 'rlist' %}" class="btn btn-primary btn-md text-white">목록으로</a>
           </div>
 
             

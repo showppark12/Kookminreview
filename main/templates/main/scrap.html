@@ -8,48 +8,55 @@
     <div>
         <h2>공부할곳 스크랩</h2>
         <div>
-            {% for sscrap in user.sscraps.all %}
-            <div>
-                <span>{{ sscrap.title }} </span>
-                <a href="{% url 'studyboarddetail' sscrap.id %}">자세히 보기</a>
-                <form action="{% url 'studyboardrscrap' sscrap.id %}" method='POST'>
-                    {% csrf_token %}
-                    <button type="submit">스크랩 취소</button>
-                </form>
-            </div>
-            {% endfor %}
+
+            {% if user.sscraps.all %}
+                {% for sscrap in user.sscraps.all %}
+                <div>
+                    <span>{{ sscrap.title }} </span>
+                    <a href="{% url 'studyboarddetail' sscrap.id %}">자세히 보기</a>
+                    <form action="{% url 'studyboardrscrap' sscrap.id %}" method='POST'>
+                        {% csrf_token %}
+                        <button type="submit">스크랩 취소</button>
+                    </form>
+                </div>
+                {% endfor %}
+            {% endif %}
         </div>
     </div>
     <hr>
     <div>
         <h3>쉴곳 스크랩</h3>
         <div>
-            {% for rscrap in user.rscraps.all %}
-            <div>
-                <span>{{ rscrap.title }} </span>
-                <a href="{% url 'rdetail' rscrap.id %}">자세히 보기</a>
-                <form action="{% url 'rrscrap' rscrap.id %}" method="POST">
-                    {% csrf_token %}
-                    <button type="submit">스크랩 취소</button>
-                </form>
-            </div>
-            {% endfor %}
+            {% if user.rscraps.all %}
+                {% for rscrap in user.rscraps.all %}
+                <div>
+                    <span>{{ rscrap.title }} </span>
+                    <a href="{% url 'rdetail' rscrap.id %}">자세히 보기</a>
+                    <form action="{% url 'rrscrap' rscrap.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit">스크랩 취소</button>
+                    </form>
+                </div>
+                {% endfor %}
+            {% endif %}
         </div>
     </div>
     <hr> 
     <div>
         <h2>음식점 스크랩</h2>
         <div>
-            {% for fscrap in user.fscraps.all %}
-            <div>
-                <span>{{ fscrap.title }} </span>
-                <a href="{% url 'FBoardDetail' fscrap.id %}">자세히 보기</a>
-                <form method="POST" action="{% url 'FBoardRemoveScrap' fscrap.id %}">
-                    {% csrf_token %}
-                    <button type="submit">스크랩 취소</button>
-                </form>
-            </div>
-            {% endfor %}
+            {% if user.fscraps.all %}
+                {% for fscrap in user.fscraps.all %}
+                <div>
+                    <span>{{ fscrap.title }} </span>
+                    <a href="{% url 'FBoardDetail' fscrap.id %}">자세히 보기</a>
+                    <form method="POST" action="{% url 'FBoardRemoveScrap' fscrap.id %}">
+                        {% csrf_token %}
+                        <button type="submit">스크랩 취소</button>
+                    </form>
+                </div>
+                {% endfor %}
+            {% endif %}
         </div>
         </div>
     </div>
@@ -57,16 +64,18 @@
     <div>
         <h3>술집 스크랩</h3>
         <div>
-            {% for bscrap in user.bscraps.all %}
-            <div>
-                <span>{{ bscrap.title }} </span>
-                <a href="{% url 'bdetail' bscrap.id %}">자세히 보기</a>
-                <form action="{% url 'brscrap' bscrap.id %}" method="POST">
-                    {% csrf_token %}
-                    <button type="submit">스크랩 취소</button>
-                </form>
-            </div>
-            {% endfor %}
+            {% if user.bscraps.all %}
+                {% for bscrap in user.bscraps.all %}
+                <div>
+                    <span>{{ bscrap.title }} </span>
+                    <a href="{% url 'bdetail' bscrap.id %}">자세히 보기</a>
+                    <form action="{% url 'brscrap' bscrap.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit">스크랩 취소</button>
+                    </form>
+                </div>
+                {% endfor %}
+            {% endif %}
         </div>
     </div>
 

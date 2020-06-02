@@ -40,4 +40,4 @@ def scrap(request):
     user = request.user
     if user.is_authenticated:
         return render(request, 'main/scrap.html')
-    return render(request, 'main/signin.html', {'form': AuthenticationForm() })
+    return redirect('login')
