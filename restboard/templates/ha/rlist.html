@@ -1,13 +1,15 @@
 {%extends 'index.html'%}
 {%block content%}
 <div class="container">
-
     <br>
-    <h1>안녕 여긴 리스트</h1>
+    <h1>쉴 곳</h1>
+    <a href = "{%url 'rcreate' %}">새 리뷰 작성하기</a>
     <hr>
-    <br>
     {% for r in rlist%}
-    <a href="{% url 'rdetail' r.id%}"><h1>{{r.title}}</h1></a>
+    <a href="{% url 'rdetail' r.id%}">
+        <h2>{{r.title}}</h2>
+        <p>{{r.pub_date}}</p>
+        <p>{{r.text}}</p>
     <hr>
     {%endfor%}
     <a href="{% url 'rcreate' %}" class="btn btn-primary btn-md text-white" style="float:right">리뷰 작성하기</a>
