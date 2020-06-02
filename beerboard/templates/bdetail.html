@@ -30,12 +30,25 @@
         <img src="{{bdetail.img.url}}" alt="" style="width: 60%; height: 60;">
         {%endif%}
         <p class="lead" style="width: 500px; height:300px;padding-top: 3rem;">{{bdetail.text}}</p>
+
         <div class="pt-5">
-          <a href="{%url 'bupdate' bdetail.id%}" class="btn btn-primary btn-md text-white" style="float:right">리뷰
-            수정하기</a>
-          <a href="{%url 'bdelete' bdetail.id%}" class="btn btn-primary btn-md text-white" style="float:right">리뷰
-            삭제하기</a>
-        </div>
+          <p>Categories: <a href="{%url 'blist' %}">술집</a></p>
+      </div>
+
+      <div class="button-group" style="padding-top: 0;">
+          <!-- 수정, 삭제 버튼 이렇게 수정하면 더 좋을 거 같아요 / 작성자 같은 사람만 버튼 볼 수 있게 하기-->
+          {% if user.is_authenticated %}
+              {% if bdetail.writer.username == request.user.username %}
+                  <a href="{% url 'bupdate' bdetail.id %}" class="btn btn-outline-primary btn-md">수정</a>
+                  <a href="{% url 'bdelete' bdetail.id %}" class="btn btn-outline-primary btn-md">삭제</a>    
+              {% endif %}
+              {% if bdetail not in user.bscraps.all %}
+                  <a href="{% url 'bscrap' bdetail.id %}" class="btn btn-primary btn-md text-white">스크랩</a>
+              {% else %}
+                  <a href="{% url 'brscrap' bdetail.id %}" class="btn btn-primary btn-md text-white">스크랩 취소</a>
+              {% endif %}
+          {% endif %}
+          <a href="{% url 'blist' %}" class="btn btn-primary btn-md text-white">목록으로</a>
 
 
         <div class="pt-5">

@@ -7,6 +7,7 @@ class BeerBoard(models.Model):
     pub_date = models.DateTimeField()
     img = models.ImageField(upload_to='beerboard/', blank=True, null=True)
     text = models.TextField()
+    bscrap_users = models.ManyToManyField(User, related_name="bscraps")
 
     def __str__(self):
         return self.title

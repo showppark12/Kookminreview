@@ -37,9 +37,19 @@ def bupdate(request, b_id):
         return redirect('bdetail',b_id)
     else:
         form = BeerBoardForm(instance= update_b)
-        print("ㅎㅎ", form.as_p)
-
     return render(request, 'bupdate.html', {'form':form,'b':update_b})
+
+def bscrap(request, b_id):
+    beer = get_object_or_404(BeerBoard, pk=b_id)
+    beer.bscrap_users.add(request.user)
+    return redirect('bdetail', b_id)
+
+def brscrap(request, b_id):
+    beer = get_object_or_404(BeerBoard, pk=b_id)
+    beer.bscrap_users.remove(request.user)
+    if request.method == 'POST':
+        return redirect('scrap')
+    return redirect('bdetail', b_id)
 
 def bdelete(request, b_id):
     delete_b = get_object_or_404(BeerBoard, pk=b_id)

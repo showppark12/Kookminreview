@@ -13,6 +13,7 @@ def FBoardHome(request):
 def FBoardDetail(request, review_id):
     review = get_object_or_404(FoodBoard, pk=review_id)
     comments= review.comments.all()
+    print("hi , i will print user scraps :", request.user.fscraps.all())
     return render(request, 'FBoardDetail.html', { 'review': review, 'comments': comments })
 
 
@@ -53,6 +54,19 @@ def FBoardDelete(request, review_id):
     to_be_deleted = get_object_or_404(FoodBoard, pk=review_id)
     to_be_deleted.delete()
     return redirect('food_home')
+
+
+def FBoardScrap(request, review_id):
+    review = get_object_or_404(FoodBoard, pk=review_id)
+    review.fscrap_users.add(request.user)
+    return redirect('FBoardDetail', review_id)
+
+def FBoardRemoveScrap(request, review_id):
+    review = get_object_or_404(FoodBoard, pk=review_id)
+    review.fscrap_users.remove(request.user)
+    if request.method == 'POST':
+        return redirect('scrap')
+    return redirect('FBoardDetail', review_id)
 
 
 def new_comment(request, review_id):
