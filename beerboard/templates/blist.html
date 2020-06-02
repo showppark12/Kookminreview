@@ -1,16 +1,17 @@
 {%extends 'index.html'%}
 {%block content%}
 <div class="container">
-
     <br>
-    <h1>안녕 여긴 리스트</h1>
+    <h1>술집</h1>
+    <a href="{%url 'bcreate' %}">새 리뷰 작성하기</a>
     <hr>
-    <br>
     {% for b in blist%}
-    <a href="{% url 'bdetail' b.id%}"><h1>{{b.title}}</h1></a>
+    <a href="{% url 'bdetail' b.id%}">
+    <h2>{{b.title}}</h2>
+    <p>{{b.pub_date}}</p>
+    <p>{{b.text}}</p>
     <hr>
     {%endfor%}
-    <a href="{%url 'bcreate'%}" class="btn btn-primary btn-md text-white" style="float:right">리뷰 작성하기</a>
     <br><br>
 </div>
 

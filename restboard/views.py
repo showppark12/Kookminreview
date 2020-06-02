@@ -5,6 +5,9 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 
+
+# 게시글 crud
+
 def rlist(request):
     rlist = RestBoard.objects.all()
     return render(request, "ha/rlist.html", {'rlist': rlist})
@@ -46,6 +49,21 @@ def rdelete(request, r_id):
     return redirect('rlist')
 
 
+# 스크랩
+def rscrap(request, r_id):
+    rest = get_object_or_404(RestBoard, pk=r_id)
+    rest.rscrap_users.add(request.user)
+    return redirect('rdetail', r_id)
+
+def rrscrap(request, r_id):
+    rest = get_object_or_404(RestBoard, pk=r_id)
+    rest.rscrap_users.remove(request.user)
+    if request.method == 'POST':
+        return redirect('scrap')
+    return redirect('rdetail', r_id)
+
+
+# 커멘트
 def ccreate(request, r_id):
     if request.method == 'POST':
         new_comment = RestBoardComment()

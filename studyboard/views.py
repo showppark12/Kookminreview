@@ -72,3 +72,15 @@ def sdelete_comment(request, c_id):
     comment.delete()
     return redirect('studyboarddetail', b_id)
 
+
+def scrap(request, blog_id):
+    blog = get_object_or_404(Blog, pk=blog_id)
+    blog.sscrap_users.add(request.user)
+    return redirect('studyboarddetail', blog_id)
+
+def rscrap(request, blog_id):
+    blog = get_object_or_404(Blog, pk=blog_id)
+    blog.sscrap_users.remove(request.user)
+    if request.method == 'POST':
+        return redirect('scrap')
+    return redirect('studyboarddetail', blog_id)
