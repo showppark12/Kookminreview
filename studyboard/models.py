@@ -7,9 +7,10 @@ class Blog(models.Model):
     title = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
     body = models.TextField()
-    #imge = models.ImageField(upload_to="blog/",blank=True,null=True) #media/blog/파일이름
     image = models.ImageField(upload_to="studyboard/",blank=True,null=True)
     writer = models.ForeignKey(User, on_delete=models.CASCADE)
+    sscrap_users = models.ManyToManyField(User, related_name="sscraps")
+
     def __str__(self):
         return self.title
 
