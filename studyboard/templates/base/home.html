@@ -1,18 +1,17 @@
 {%extends 'index.html'%}
 {% block content %}
-<h1>StudyBoard</h1>
-<a href="{%url 'studyboardnew' %}">new</a>
-{% for blog in blogs.all %}
-<hr>
-<a href="{%url 'studyboarddetail' blog.id %}">
-    <h2>{{blog.title}}</h2>
-    <p>{{blog.pub_date}}</p>
-    <p>{{blog.body}}</p>
+<div class="container">
     <br>
-    {% if blog.image %}
-    <img src="{{ blog.image.url }}" alt="">
-    {% endif %}
-
-    <br><br>
+    <h1>공부할 곳</h1>
+    <a href="{%url 'studyboardnew' %}">새 리뷰 작성하기</a>
+    <hr>
+    {% for blog in blogs.all %}
+    <a href="{%url 'studyboarddetail' blog.id %}">
+        <h2>{{blog.title}}</h2>
+        <p>{{blog.pub_date}}</p>
+        <p>{{blog.body}}</p>
+        <hr>
+        <br><br>
+</div>
 {%endfor%}
 {% endblock %}

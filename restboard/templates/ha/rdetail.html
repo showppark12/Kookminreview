@@ -8,7 +8,8 @@
 
             <div class="box-shadow-content">
               <div class="block-heading-1">
-                <span class="d-block mb-3 text-white" data-aos="fade-up">{{rdetail.pub_date}} <span class="mx-2 text-primary">&bullet;</span>{{rdetail.writer}}</span>
+                <span class="d-block mb-3 text-white" data-aos="fade-up">{{rdetail.pub_date}} 
+                <span class="mx-2 text-primary">&bullet;</span>by {{rdetail.writer}}</span>
                 <h1 class="mb-4" data-aos="fade-up" data-aos-delay="100">{{rdetail.title}}</h1>
               </div>
             </div>
@@ -29,8 +30,12 @@
             {%endif%}
             <p class="lead" style="width: 500px; height:300px;padding-top: 3rem;">{{rdetail.text}}</p>
             <div class="pt-5">
-                <a href="{%url 'rupdate' rdetail.id%}" class="btn btn-primary btn-md text-white" style="float:right">리뷰 수정하기</a>
-                <a href="{%url 'rdelete' rdetail.id%}" class="btn btn-primary btn-md text-white" style="float:right">리뷰 삭제하기</a>
+              <p>Categories: <a href="{%url 'rlist' %}">쉴 곳</a></p>
+            </div>
+            <div class="pt-5">
+                <a href="{%url 'rupdate' rdetail.id%}" class="btn btn-outline-primary btn-md" >수정</a>
+                <a href="{%url 'rdelete' rdetail.id%}" class="btn btn-outline-primary btn-md" >삭제</a>
+                <a href="{% url 'rlist' %}" class="btn btn-primary btn-md text-white">목록으로</a>
             </div>
 
             
@@ -74,6 +79,24 @@
           </div>
           <div class="col-md-4 sidebar">
             <div class="sidebar-box">
+              <img src="/static/images/person_1.jpg" alt="Image" class="img-fluid mb-4 w-50 rounded-circle">
+              <h3 class="text-black">{{rdetail.writer}}</h3>
+              <p>유저 확장 제대로 한다면 이 모든게 채워질거야 ~</p>
+              <p><a href="#" class="btn btn-primary btn-md text-white">Read More</a></p>
+            </div>
+            <div class="sidebar-box">
+              <div class="categories">
+                <h3>Categories</h3>
+                <li><a href="{% url 'studyboardhome' %}">공부할곳<span>(12)</span></a>
+                </li>
+                <li>
+                  <a href="{% url 'rlist' %}">쉴곳<span>(22)</span></a>
+                </li>
+                <li><a href="{% url 'food_home' %}">음식점<span>(37)</span></a></li>
+                <li><a href="{% url 'blist' %}">술집<span>(42)</span></a></li>
+              </div>
+            </div>
+            <div class="sidebar-box">
               <form action="#" class="search-form">
                 <div class="form-group">
                   <span class="icon fa fa-search"></span>
@@ -81,22 +104,8 @@
                 </div>
               </form>
             </div>
-            <div class="sidebar-box">
-              <div class="categories">
-                <h3>Categories</h3>
-                <li><a href="#">Creatives <span>(12)</span></a></li>
-                <li><a href="#">News <span>(22)</span></a></li>
-                <li><a href="#">Design <span>(37)</span></a></li>
-                <li><a href="#">HTML <span>(42)</span></a></li>
-                <li><a href="#">Web Development <span>(14)</span></a></li>
-              </div>
-            </div>
-            <div class="sidebar-box">
-              <img src="/static/images/person_1.jpg" alt="Image" class="img-fluid mb-4 w-50 rounded-circle">
-              <h3 class="text-black">{{rdetail.writer}}</h3>
-              <p>유저 확장 제대로 한다면 이 모든게 채워질거야 ~</p>
-              <p><a href="#" class="btn btn-primary btn-md text-white">Read More</a></p>
-            </div>
+
+
 
             <div class="sidebar-box">
               <h3>Paragraph</h3>
