@@ -55,7 +55,6 @@ def FBoardDelete(request, review_id):
     to_be_deleted.delete()
     return redirect('food_home')
 
-
 def FBoardScrap(request, review_id):
     review = get_object_or_404(FoodBoard, pk=review_id)
     review.fscrap_users.add(request.user)
