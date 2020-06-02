@@ -1,12 +1,6 @@
-{% extends 'index.html' %} {% block content %}{% if user.is_authenticated %}
+{% extends 'index.html' %} {% block content %}
 <div class="wrapper">
     <div class="container">
-        <h3>안녕하세요. {{ user.username }}님!</h3>
-        {% if user.profile_img %}
-        <div><img src="{{ user.profile_img.url }}"></div> {% endif %}
-        <a href="{%url 'logout' %}">로그아웃</a> {% else %}
-        <a href="{%url 'login' %}">로그인</a>
-        <a href="{%url 'register' %}">회원가입</a> {% endif %}
         <table class="review_list">
             <div>
                 <a href="{% url 'FBoardNew' %}">새 리뷰 작성하기</a>
@@ -20,7 +14,6 @@
                     <h3>{{ review.title }} </h3>
                     <p>{{ review.pub_date }} </p>
                     <p>{{ review.summary }} </p>
-                    <!-- <p>추천수: {{ review.recommend }} </p> -->
                     <a href="{% url 'FBoardDetail' review.id %}">자세히 보기</a>
                 </td>
             </tr>
