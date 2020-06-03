@@ -41,7 +41,7 @@
                   {%endif%}
                 <h3 class="font-size-20 text-black">{{blog.title}}</h3>
                 <blockquote class="mb-4">
-                  <p style="font-family: sans-serif;">&ldquo;{{b.text}}&rdquo;</p>
+                  <p style="font-family: sans-serif;">&ldquo;{{blog.text}}&rdquo;</p>
                 </blockquote>
                 <a href="{%url 'FBoardDetail' blog.id %}" class="btn">자세히</a>
               </div>
@@ -50,6 +50,8 @@
           </div>
         </div>
       </div>
+      <br>
+      <br>
   </div>
 
 {% endblock %}
