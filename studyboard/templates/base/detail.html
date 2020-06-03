@@ -26,14 +26,13 @@
 
 <section class="site-section">
   <div class="container">
-    <div class="row pt-lg-5">
-      <div class="col-md-8 blog-content ">
-        <p class="lead">
+    <div class="row">
+      <div class="col-md-8 blog-content">
           {% if blog.image %}
           <img src="{{ blog.image.url }}" alt="" style="width: 60%; height: 60;">
           {% endif %}
           <br>
-          {{blog.body}}</p>
+          <p class="lead" style="width: 500px; height:300px;padding-top: 3rem;">{{blog.body}}</p>
 
         <div class="button-group" style="padding-top: 0;">
           <!-- 수정, 삭제 버튼 이렇게 수정하면 더 좋을 거 같아요 / 작성자 같은 사람만 버튼 볼 수 있게 하기-->
@@ -64,7 +63,9 @@
                 <h3>{{c.writer}}</h3>
                 <div class="meta">{{c.pub_date}}</div>
                 <p>{{c.text}}</p>
+                {% if c.writer.username == request.user.username %}
                 <p><a href="{% url 'sdelete_comment' c.id %}" class="reply" style="float :right">삭제</a></p>
+                {% endif%}
               </div>
             </li>
             {%endfor%}
@@ -79,10 +80,11 @@
                 <label for="message">Message</label>
                 <textarea name="sctext" id="message" cols="30" rows="10" class="form-control"></textarea>
               </div>
+              {%if user.is_authenticated%}
               <div class="form-group">
                 <input type="submit" value="댓글 작성" class="btn btn-primary btn-md text-white">
-
               </div>
+              {%endif%}
 
             </form>
           </div>

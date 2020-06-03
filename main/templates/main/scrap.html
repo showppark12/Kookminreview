@@ -1,8 +1,9 @@
 {% extends 'index.html' %}
 
 {% block content %}
-
-{% if user.is_authenticated %}
+<div class="container">
+    <br>
+    {% if user.is_authenticated %}
 
 
 <div class="wrwapper">
@@ -61,7 +62,7 @@
                 {% endfor %}
             {% endif %}
         </div>
-    </div>
+        </div>
     <hr>
     <div>
         <h4 class="font-weight-bold" style="color: #ff8b00;">술집</h4>
@@ -80,9 +81,7 @@
             {% endif %}
         </div>
     </div>
-
 </div>
 </div>
 {% endif %}
-
 {% endblock %}
