@@ -49,6 +49,7 @@
               {% endif %}
           {% endif %}
           <a href="{% url 'blist' %}" class="btn btn-primary btn-md text-white">목록으로</a>
+      </div>
 
 
         <div class="pt-5">
@@ -63,11 +64,14 @@
                 <h3>{{c.writer}}</h3>
                 <div class="meta">{{c.pub_date}}</div>
                 <p>{{c.text}}</p>
+                {% if c.writer.username == request.user.username %}
                 <p><a href="{% url 'delete_comment' c.id %}" class="reply" style="float :right">삭제</a></p>
+                {%endif%}
               </div>
             </li>
             {%endfor%}
           </ul>
+        </div>
           <!-- END comment-list -->
 
           <div class="comment-form-wrap pt-5">
@@ -78,14 +82,15 @@
                 <label for="message">Message</label>
                 <textarea name="ctext" id="message" cols="30" rows="10" class="form-control"></textarea>
               </div>
+              {%if user.is_authenticated%}
               <div class="form-group">
                 <input type="submit" value="댓글 작성" class="btn btn-primary btn-md text-white">
-
               </div>
+              {%endif%}
 
             </form>
           </div>
-        </div>
+        
 
       </div>
       <div class="col-md-4 sidebar">
@@ -115,17 +120,9 @@
             </div>
           </form>
         </div>
-
-
-
-        <div class="sidebar-box">
-          <h3>Paragraph</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate
-            quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit
-            cupiditate numquam!</p>
-        </div>
       </div>
     </div>
+  </div>
   </div>
 </section>
 {%endblock%}

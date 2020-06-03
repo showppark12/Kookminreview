@@ -1,10 +1,12 @@
 {% extends 'index.html' %}
 
 {% block content %}
-
-{% if user.is_authenticated %}
+<div class="container">
+    <br>
+    {% if user.is_authenticated %}
 
     안녕하세요. {{ user.username }} 님!
+    {%endif%}
     <div>
         <h2>공부할곳 스크랩</h2>
         <div>
@@ -59,7 +61,6 @@
             {% endif %}
         </div>
         </div>
-    </div>
     <hr>
     <div>
         <h3>술집 스크랩</h3>
@@ -78,6 +79,5 @@
             {% endif %}
         </div>
     </div>
-
-{% endif %}
+</div>
 {% endblock %}
