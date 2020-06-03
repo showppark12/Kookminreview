@@ -2,7 +2,7 @@
 {%block content%}
 <div class="container">
     <br>
-    <h1>쉴 곳</h1>
+    <h1>휴식공간</h1>
     <a href = "{%url 'rcreate' %}">새 리뷰 작성하기</a>
     <hr>
     {% for r in rlist%}
@@ -12,8 +12,7 @@
         <p>{{r.text}}</p>
     <hr>
     {%endfor%}
-    <a href="{% url 'rcreate' %}" class="btn btn-primary btn-md text-white" style="float:right">리뷰 작성하기</a>
-    <br><br>
 </div>
+<br><br>
 
 {%endblock%}
