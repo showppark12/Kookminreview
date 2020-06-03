@@ -14,9 +14,11 @@ def rlist(request):
 
 
 def rdetail(request, r_id):
-    rdetail = get_object_or_404(RestBoard, pk=r_id)
-    comments = rdetail.comments.all()
-    return render(request, 'ha/rdetail.html', {'rdetail': rdetail, 'comments':comments})
+    if request.user.is_authenticated:
+        rdetail = get_object_or_404(RestBoard, pk=r_id)
+        comments = rdetail.comments.all()
+        return render(request, 'ha/rdetail.html', {'rdetail': rdetail, 'comments':comments})
+    return redirect('login')
 
 def rcreate(request):
     if request.method == 'POST':

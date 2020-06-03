@@ -11,10 +11,11 @@ def FBoardHome(request):
 
 
 def FBoardDetail(request, review_id):
-    review = get_object_or_404(FoodBoard, pk=review_id)
-    comments= review.comments.all()
-    print("hi , i will print user scraps :", request.user.fscraps.all())
-    return render(request, 'FBoardDetail.html', { 'review': review, 'comments': comments })
+    if request.user.is_authenticated:
+        review = get_object_or_404(FoodBoard, pk=review_id)
+        comments= review.comments.all()
+        return render(request, 'FBoardDetail.html', { 'review': review, 'comments': comments })
+    return redirect('login')
 
 
 def FBoardNew(request):
