@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container">
     <br>
-    <h1>공부할 곳</h1>
+    <h1>스터디공간</h1>
     <a href="{%url 'studyboardnew' %}">새 리뷰 작성하기</a>
     <hr>
     {% for blog in blogs.all %}
@@ -11,7 +11,7 @@
         <p>{{blog.pub_date}}</p>
         <p>{{blog.body}}</p>
         <hr>
-        <br><br>
+    {%endfor%}
 </div>
-{%endfor%}
+<br><br>
 {% endblock %}

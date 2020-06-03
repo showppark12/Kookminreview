@@ -19,7 +19,6 @@
 
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="/static/css/style.css">
-
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -46,17 +45,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <a href="#" class="text-white"><span class="mr-2 text-white icon-envelope-open-o"></span> <span class="d-none d-md-inline-block">info@yourdomain.com</span></a>
-                        <span class="mx-md-2 d-inline-block"></span>
-                        <a href="#" class="text-white"><span class="mr-2 text-white icon-phone"></span> <span class="d-none d-md-inline-block">1+ (234) 5678 9101</span></a>
-
-
+                        <a href="#" class="text-white"><span class="mr-2 text-white icon-book"></span> <span class="d-none d-md-inline-block">Likelion : 2nd Ideathon</span></a>
+                        <span class="mx-md-3 d-inline-block"></span>
+                        <a href="#" class="text-white"><span class="mr-2 text-white icon-people"></span> <span class="d-none d-md-inline-block">박종민 이예진 이현수 구다희</span></a>
                         <div class="float-right">
-
-                            <a href="#" class="text-white"><span class="mr-2 text-white icon-twitter"></span> <span class="d-none d-md-inline-block">Twitter</span></a>
+                            <a href="https://github.com/showppark12/Kookminreview" class="text-white"><span class="mr-2 text-white icon-github"></span> <span class="d-none d-md-inline-block">Github</span></a>
                             <span class="mx-md-2 d-inline-block"></span>
-                            <a href="#" class="text-white"><span class="mr-2 text-white icon-instagram"></span> <span class="d-none d-md-inline-block">Instagram</span></a>
-
+                            <a href="https://www.notion.so/da4d6377229142b786b7a60a5d4ea4b1" class="text-white"><span class="mr-2 text-white icon-cube"></span> <span class="d-none d-md-inline-block">Notion</span></a>
                         </div>
 
                     </div>
@@ -81,7 +76,7 @@
                             <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
 
                                 <li><a href="{% url 'studyboardhome' %}" class="nav-link">스터디공간</a></li>
-                                <li><a href="#" class="nav-link">휴식공간</a></li>
+                                <li><a href="{% url 'rlist' %}" class="nav-link">휴식공간</a></li>
                                 <li><a href="{% url 'food_home'%}" class="nav-link">음식점</a></li>
                                 <li><a href="{% url 'blist'%}" class="nav-link">술집</a></li>
                                 {%if not user.is_authenticated %}
@@ -119,17 +114,15 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <h2 class="footer-heading mb-4">KMU HIDDEN AREA</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque facere laudantium magnam voluptatum autem. Amet aliquid nesciunt veritatis aliquam.</p>
+                                <p>멋쟁이사자처럼 2회 미니 아이디어톤 프로젝트. 국민대 재학생을 위한 솔직한 지하세계 리뷰 사이트! 리뷰를 남기고 원하는 장소를 찾아보세요.</p>
                             </div>
                             <div class="col-md-4 ml-auto">
-                                <h2 class="footer-heading mb-4">KMU HIDDEN AREA</h2>
+                                <h2 class="footer-heading mb-4">CATEGORY</h2>
                                 <ul class="list-unstyled">
-                                    <li><a href="#">스터디공간</a></li>
-                                    <li><a href="#">휴식공간</a></li>
-                                    <li><a href="#">음식점</a></li>
-                                    <li><a href="#">술집</a></li>
-                                    <li><a href="#">리뷰 신고하기</a></li>
-                                    <li><a href="#">온라인 문의하기 </a></li>
+                                    <li><a href="{% url 'studyboardhome' %}">스터디공간</a></li>
+                                    <li><a href="{% url 'rlist' %}">휴식공간</a></li>
+                                    <li><a href="{% url 'food_home' %}">음식점</a></li>
+                                    <li><a href="{% url 'blist' %}">술집</a></li>
                                 </ul>
                             </div>
 
@@ -150,10 +143,8 @@
 
 
                         <h2 class="footer-heading mb-4">Follow Us</h2>
-                        <a href="#about-section" class="smoothscroll pl-0 pr-3"><span class="icon-facebook"></span></a>
-                        <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-                        <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-                        <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+                        <a href="https://github.com/showppark12/Kookminreview" class="pr-2"><span class="icon-github"></span></a>
+                        <a href="https://www.notion.so/da4d6377229142b786b7a60a5d4ea4b1" class="pl-3 pr-3"><span class="icon-cube"></span></a>
                         </form>
                     </div>
                 </div>
