@@ -5,20 +5,22 @@
     <br>
     {% if user.is_authenticated %}
 
-    안녕하세요. {{ user.username }} 님!
-    {%endif%}
-    <div>
-        <h2>공부할곳 스크랩</h2>
-        <div>
 
+<div class="wrwapper">
+    <div class="container">
+    <h3><span style="color: #ff8b00;">{{ user.username }}</span>님의 스크랩 목록</h3>
+    <hr>
+    <div class="mb-5 pt-5">
+        <h4 class="font-weight-bold" style="color: #ff8b00;">스터디공간</h4>
+        <div class="mb-5">
             {% if user.sscraps.all %}
                 {% for sscrap in user.sscraps.all %}
-                <div>
-                    <span>{{ sscrap.title }} </span>
-                    <a href="{% url 'studyboarddetail' sscrap.id %}">자세히 보기</a>
-                    <form action="{% url 'studyboardrscrap' sscrap.id %}" method='POST'>
+                <div class="mb-1">
+                    <span class="h5">{{ sscrap.title }}</span>
+                    <a class="btn btn-outline-primary btn-sm" href="{% url 'studyboarddetail' sscrap.id %}">자세히 보기</a>
+                    <form action="{% url 'studyboardrscrap' sscrap.id %}" method='POST' style="display:inline">
                         {% csrf_token %}
-                        <button type="submit">스크랩 취소</button>
+                        <button class="btn btn-primary btn-sm text-white" type="submit">스크랩 취소</button>
                     </form>
                 </div>
                 {% endfor %}
@@ -27,16 +29,16 @@
     </div>
     <hr>
     <div>
-        <h3>쉴곳 스크랩</h3>
-        <div>
+        <h4 style="color: #ff8b00;" class="font-weight-bold">휴식공간</h4>
+        <div class="mb-5">
             {% if user.rscraps.all %}
                 {% for rscrap in user.rscraps.all %}
-                <div>
-                    <span>{{ rscrap.title }} </span>
-                    <a href="{% url 'rdetail' rscrap.id %}">자세히 보기</a>
-                    <form action="{% url 'rrscrap' rscrap.id %}" method="POST">
+                <div class="mb-1">
+                    <span class="h5">{{ rscrap.title }} </span>
+                    <a class="btn btn-outline-primary btn-sm"  href="{% url 'rdetail' rscrap.id %}">자세히 보기</a>
+                    <form action="{% url 'rrscrap' rscrap.id %}" method="POST" style="display:inline">
                         {% csrf_token %}
-                        <button type="submit">스크랩 취소</button>
+                        <button class="btn btn-primary btn-sm text-white" type="submit">스크랩 취소</button>
                     </form>
                 </div>
                 {% endfor %}
@@ -45,16 +47,16 @@
     </div>
     <hr> 
     <div>
-        <h2>음식점 스크랩</h2>
-        <div>
+        <h4 class="font-weight-bold"  style="color: #ff8b00;">음식점</h4>
+        <div class="mb-5">
             {% if user.fscraps.all %}
                 {% for fscrap in user.fscraps.all %}
-                <div>
-                    <span>{{ fscrap.title }} </span>
-                    <a href="{% url 'FBoardDetail' fscrap.id %}">자세히 보기</a>
-                    <form method="POST" action="{% url 'FBoardRemoveScrap' fscrap.id %}">
+                <div class="mb-1">
+                    <span class="h5">{{ fscrap.title }} </span>
+                    <a class="btn btn-outline-primary btn-sm" href="{% url 'FBoardDetail' fscrap.id %}">자세히 보기</a>
+                    <form method="POST" action="{% url 'FBoardRemoveScrap' fscrap.id %}" style="display:inline">
                         {% csrf_token %}
-                        <button type="submit">스크랩 취소</button>
+                        <button class="btn btn-primary btn-sm text-white" type="submit">스크랩 취소</button>
                     </form>
                 </div>
                 {% endfor %}
@@ -63,16 +65,16 @@
         </div>
     <hr>
     <div>
-        <h3>술집 스크랩</h3>
-        <div>
+        <h4 class="font-weight-bold" style="color: #ff8b00;">술집</h4>
+        <div class="mb-5">
             {% if user.bscraps.all %}
                 {% for bscrap in user.bscraps.all %}
-                <div>
-                    <span>{{ bscrap.title }} </span>
-                    <a href="{% url 'bdetail' bscrap.id %}">자세히 보기</a>
-                    <form action="{% url 'brscrap' bscrap.id %}" method="POST">
+                <div class="mb-1">
+                    <span class="h5">{{ bscrap.title }} </span>
+                    <a class="btn btn-outline-primary btn-sm" href="{% url 'bdetail' bscrap.id %}">자세히 보기</a>
+                    <form action="{% url 'brscrap' bscrap.id %}" method="POST" style="display:inline">
                         {% csrf_token %}
-                        <button type="submit">스크랩 취소</button>
+                        <button class="btn btn-primary btn-sm text-white" class="btn" type="submit">스크랩 취소</button>
                     </form>
                 </div>
                 {% endfor %}
@@ -80,4 +82,6 @@
         </div>
     </div>
 </div>
+</div>
+{% endif %}
 {% endblock %}
