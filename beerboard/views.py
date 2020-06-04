@@ -11,11 +11,9 @@ def blist(request):
 
 
 def bdetail(request, b_id):
-    if request.user.is_authenticated:
-        bdetail = get_object_or_404(BeerBoard, pk=b_id)
-        comments= bdetail.comments.all()
-        return render(request, 'bdetail.html', {'bdetail': bdetail, 'comments': comments})
-    return redirect('login')
+    bdetail = get_object_or_404(BeerBoard, pk=b_id)
+    comments= bdetail.comments.all()
+    return render(request, 'bdetail.html', {'bdetail': bdetail, 'comments': comments})
 
 def bcreate(request):
     if request.method == 'POST':
