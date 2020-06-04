@@ -38,7 +38,7 @@
                       <a href="{% url 'rupdate' rdetail.id %}" class="btn btn-outline-primary btn-md">수정</a>
                       <a href="{% url 'rdelete' rdetail.id %}" class="btn btn-outline-primary btn-md">삭제</a>    
                   {% endif %}
-                  {% if rscrap not in user.rscraps.all %}
+                  {% if rdetail not in user.rscraps.all %}
                       <a href="{% url 'rscrap' rdetail.id %}" class="btn btn-primary btn-md text-white">스크랩</a>
                   {% else %}
                       <a href="{% url 'rrscrap' rdetail.id %}" class="btn btn-primary btn-md text-white">스크랩 취소</a>
