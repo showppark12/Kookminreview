@@ -10,11 +10,9 @@ def home(request):
     return render(request, 'base/home.html', {"blogs":blogs})
 
 def detail(request,blog_id):
-    if request.user.is_authenticated:
-        blog = get_object_or_404(Blog, pk = blog_id)
-        comments = blog.comments.all()
-        return render(request, 'base/detail.html',{'blog':blog, 'comments': comments})
-    return redirect('login')
+    blog = get_object_or_404(Blog, pk = blog_id)
+    comments = blog.comments.all()
+    return render(request, 'base/detail.html',{'blog':blog, 'comments': comments})
 
 def new(request):
     # 1. 데이터가 입력 된 후 제출 버튼을 누르고 데이터저장 =  post
